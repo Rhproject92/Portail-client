@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intérim Qualité Paris — Portail Client Échafaudage</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bleu: #0d2a4e;
+    --bleu-mid: #1a3d6b;
+    --bleu-light: #1e4f8a;
+    --orange: #e85e1a;
+    --orange-light: #ff7433;
+    --blanc: #ffffff;
+    --gris-clair: #f4f6f9;
+    --gris: #8a95a3;
+    --gris-bord: #dde3ec;
+    --vert: #1aab5e;
+    --rouge: #e02020;
+    --texte: #0d2a4e;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--gris-clair);
+    color: var(--texte);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--bleu);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+  }
+
+  .logo-zone {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .logo-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--orange);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    color: white;
+    letter-spacing: -0.5px;
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .logo-text span:first-child {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: white;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .logo-text span:last-child {
+    font-size: 10px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .client-badge {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+
+  .client-badge strong {
+    color: white;
+  }
+
+  .btn-deconnexion {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    cursor: pointer;
+    font-family: 'Barlow', sans-serif;
+    transition: all 0.2s;
+  }
+  .btn-deconnexion:hover { border-color: rgba(255,255,255,0.6); color: white; }
+
+  /* ── BANDEAU ACCROCHE ── */
+  .hero {
+    background: linear-gradient(135deg, var(--bleu) 0%, var(--bleu-light) 100%);
+    padding: 2.5rem 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    right: -60px;
+    top: -40px;
+    width: 300px;
+    height: 300px;
+    border: 60px solid rgba(232,94,26,0.12);
+    border-radius: 50%;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    right: 80px;
+    bottom: -80px;
+    width: 200px;
+    height: 200px;
+    border: 40px solid rgba(232,94,26,0.08);
+    border-radius: 50%;
+  }
+
+  .hero-content { position: relative; z-index: 1; }
+
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .hero h1 span { color: var(--orange-light); }
+
+  .hero p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    max-width: 500px;
+    line-height: 1.5;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.5rem;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--orange-light);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+
+  /* ── BARRE FILTRES ── */
+  .filtres-bar {
+    background: white;
+    border-bottom: 2px solid var(--gris-bord);
+    padding: 1rem 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .filtres-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gris);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-right: 4px;
+  }
+
+  .filtre-btn {
+    background: white;
+    border: 1.5px solid var(--gris-bord);
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--bleu);
+    cursor: pointer;
+    font-family: 'Barlow', sans-serif;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .filtre-btn:hover { border-color: var(--orange); color: var(--orange); }
+
+  .filtre-btn.actif {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: white;
+  }
+
+  .filtre-sep { width: 1px; height: 24px; background: var(--gris-bord); margin: 0 4px; }
+
+  .search-input {
+    margin-left: auto;
+    border: 1.5px solid var(--gris-bord);
+    border-radius: 20px;
+    padding: 6px 16px 6px 36px;
+    font-size: 13px;
+    font-family: 'Barlow', sans-serif;
+    color: var(--texte);
+    outline: none;
+    background: var(--gris-clair) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%238a95a3' stroke-width='2.5'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E") no-repeat 12px center;
+    width: 200px;
+    transition: all 0.2s;
+  }
+  .search-input:focus { border-color: var(--bleu-light); width: 240px; background-color: white; }
+
+  /* ── CONTENEUR PRINCIPAL ── */
+  .main {
+    padding: 2rem 2.5rem;
+    max-width: 1300px;
+  }
+
+  .section-titre {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+  }
+
+  .section-titre h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--bleu);
+  }
+
+  .section-titre h2 span {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gris);
+    text-transform: none;
+    letter-spacing: 0;
+    font-family: 'Barlow', sans-serif;
+    margin-left: 8px;
+  }
+
+  .badge-dispo {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #e8f9f0;
+    color: #0d7a40;
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .badge-dispo::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    background: var(--vert);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.3); }
+  }
+
+  /* ── GRILLE PROFILS ── */
+  .grille {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .carte {
+    background: white;
+    border-radius: 12px;
+    border: 1.5px solid var(--gris-bord);
+    overflow: hidden;
+    transition: all 0.2s;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .carte:hover {
+    border-color: var(--orange);
+    box-shadow: 0 8px 28px rgba(232,94,26,0.12);
+    transform: translateY(-2px);
+  }
+
+  .carte.selected {
+    border-color: var(--orange);
+    box-shadow: 0 8px 28px rgba(232,94,26,0.2);
+  }
+
+  .carte.selected::before {
+    content: '✓ Sélectionné';
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--orange);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+  }
+
+  .carte-header {
+    background: var(--bleu);
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: white;
+    flex-shrink: 0;
+    border: 2px solid rgba(255,255,255,0.2);
+  }
+
+  .carte-identite { flex: 1; }
+
+  .carte-prenom {
+    font-weight: 700;
+    font-size: 16px;
+    color: white;
+    line-height: 1.1;
+  }
+
+  .carte-matricule {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 1px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .status-dot.disponible { background: #4ade80; box-shadow: 0 0 0 3px rgba(74,222,128,0.25); }
+  .status-dot.bientot { background: #fbbf24; box-shadow: 0 0 0 3px rgba(251,191,36,0.25); }
+
+  .carte-body { padding: 1.1rem 1.25rem; }
+
+  .qualif-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #edf2ff;
+    color: var(--bleu);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin-bottom: 12px;
+  }
+
+  .formations {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .formation-tag {
+    background: #f0f9f4;
+    border: 1px solid #c3e8d4;
+    color: #0d7a40;
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .formation-tag::before { content: '✓'; font-size: 10px; }
+
+  .infos-bas {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border-top: 1px solid var(--gris-bord);
+    padding-top: 10px;
+    margin-top: 4px;
+  }
+
+  .info-ligne {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
+    color: var(--gris);
+  }
+
+  .info-ligne strong { color: var(--texte); font-weight: 600; }
+
+  .info-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    opacity: 0.5;
+  }
+
+  .carte-footer {
+    padding: 0.75rem 1.25rem;
+    border-top: 1px solid var(--gris-bord);
+    background: var(--gris-clair);
+    display: flex;
+    gap: 8px;
+  }
+
+  .btn-detail {
+    flex: 1;
+    padding: 8px 0;
+    background: white;
+    border: 1.5px solid var(--gris-bord);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--bleu);
+    cursor: pointer;
+    font-family: 'Barlow', sans-serif;
+    transition: all 0.15s;
+  }
+  .btn-detail:hover { border-color: var(--bleu-light); background: #edf2ff; }
+
+  .btn-choisir {
+    flex: 1.5;
+    padding: 8px 0;
+    background: var(--orange);
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    font-family: 'Barlow', sans-serif;
+    transition: all 0.15s;
+    letter-spacing: 0.3px;
+  }
+  .btn-choisir:hover { background: var(--orange-light); }
+
+  /* ── BARRE SÉLECTION ── */
+  .barre-selection {
+    position: fixed;
+    bottom: -80px;
+    left: 0;
+    right: 0;
+    background: var(--bleu);
+    padding: 1rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 200;
+    box-shadow: 0 -4px 24px rgba(0,0,0,0.3);
+    transition: bottom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .barre-selection.visible { bottom: 0; }
+
+  .barre-selection-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .barre-selection-left strong {
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .barre-selection-left p {
+    color: rgba(255,255,255,0.6);
+    font-size: 13px;
+  }
+
+  .barre-btns { display: flex; gap: 10px; }
+
+  .btn-annuler {
+    padding: 10px 20px;
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    border-radius: 8px;
+    color: rgba(255,255,255,0.7);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Barlow', sans-serif;
+    transition: all 0.15s;
+  }
+  .btn-annuler:hover { border-color: rgba(255,255,255,0.6); color: white; }
+
+  .btn-demander {
+    padding: 10px 28px;
+    background: var(--orange);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Barlow', sans-serif;
+    letter-spacing: 0.3px;
+    transition: all 0.15s;
+  }
+  .btn-demander:hover { background: var(--orange-light); transform: scale(1.03); }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(13,42,78,0.7);
+    z-index: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    padding: 2rem;
+  }
+
+  .modal-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .modal {
+    background: white;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 520px;
+    overflow: hidden;
+    transform: translateY(20px) scale(0.97);
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .modal-overlay.open .modal {
+    transform: translateY(0) scale(1);
+  }
+
+  .modal-header {
+    background: var(--bleu);
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .modal-header h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .modal-header p { color: rgba(255,255,255,0.55); font-size: 13px; margin-top: 2px; }
+
+  .modal-close {
+    background: rgba(255,255,255,0.1);
+    border: none;
+    border-radius: 6px;
+    width: 30px;
+    height: 30px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+  }
+  .modal-close:hover { background: rgba(255,255,255,0.2); }
+
+  .modal-body { padding: 1.5rem; }
+
+  .modal-section { margin-bottom: 1.25rem; }
+  .modal-section-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gris);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--gris-bord);
+  }
+
+  .modal-formations { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .modal-formation {
+    background: #f0f9f4;
+    border: 1px solid #c3e8d4;
+    color: #0d7a40;
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .modal-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .modal-info-cell {
+    background: var(--gris-clair);
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+
+  .modal-info-cell .label { font-size: 11px; color: var(--gris); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+  .modal-info-cell .value { font-size: 14px; font-weight: 700; color: var(--texte); margin-top: 2px; }
+
+  .modal-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--gris-bord);
+    display: flex;
+    gap: 10px;
+  }
+
+  .modal-btn-sec {
+    flex: 1;
+    padding: 11px 0;
+    background: var(--gris-clair);
+    border: 1.5px solid var(--gris-bord);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--texte);
+    cursor: pointer;
+    font-family: 'Barlow', sans-serif;
+    transition: all 0.15s;
+  }
+  .modal-btn-sec:hover { border-color: var(--bleu); }
+
+  .modal-btn-prim {
+    flex: 2;
+    padding: 11px 0;
+    background: var(--orange);
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    font-family: 'Barlow', sans-serif;
+    transition: all 0.15s;
+  }
+  .modal-btn-prim:hover { background: var(--orange-light); }
+
+  /* ── MODAL CONFIRMATION ── */
+  .modal-confirm-icon {
+    width: 60px;
+    height: 60px;
+    background: #e8f9f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 28px;
+  }
+
+  .modal-confirm-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--bleu);
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .modal-confirm-text {
+    text-align: center;
+    color: var(--gris);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ── SECTION DEMANDES ── */
+  .demandes-section {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--gris-bord);
+  }
+
+  .demande-card {
+    background: white;
+    border-radius: 10px;
+    border: 1.5px solid var(--gris-bord);
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+
+  .demande-status {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  .demande-status.attente { background: #fff8e6; color: #a16e00; }
+  .demande-status.confirmee { background: #e8f9f0; color: #0d7a40; }
+
+  .demande-info { flex: 1; }
+  .demande-info strong { font-size: 14px; font-weight: 700; color: var(--texte); display: block; }
+  .demande-info span { font-size: 12px; color: var(--gris); }
+
+  .demande-date { font-size: 12px; color: var(--gris); text-align: right; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bleu);
+    padding: 1.5rem 2.5rem;
+    margin-top: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  footer p { font-size: 12px; color: rgba(255,255,255,0.4); }
+  footer a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 12px; }
+  footer a:hover { color: white; }
+
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo-zone">
+    <div class="logo-icon">IQ</div>
+    <div class="logo-text">
+      <span>Intérim Qualité</span>
+      <span>Groupe IP · Portail client</span>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="client-badge">Connecté : <strong>SOGEA BTP Paris</strong></div>
+    <button class="btn-deconnexion">Déconnexion</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <h1>Vos intérimaires <span>disponibles</span><br>en temps réel</h1>
+    <p>Sélectionnez vos profils échafaudage directement depuis ce portail. Toutes les qualifications et formations sont mises à jour en continu par votre agence.</p>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num" id="stat-dispo">8</div>
+        <div class="stat-label">Disponibles</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Certifiés MASE</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">&lt; 24h</div>
+        <div class="stat-label">Délai mise en place</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FILTRES -->
+<div class="filtres-bar">
+  <span class="filtres-label">Filtrer :</span>
+  <button class="filtre-btn actif" onclick="filtrer('tous', this)">Tous</button>
+  <button class="filtre-btn" onclick="filtrer('monteur', this)">Monteur échafaudage</button>
+  <button class="filtre-btn" onclick="filtrer('aide', this)">Aide-monteur</button>
+  <button class="filtre-btn" onclick="filtrer('manutentionnaire', this)">Manutentionnaire</button>
+  <div class="filtre-sep"></div>
+  <button class="filtre-btn" onclick="filtrer('disponible', this)">🟢 Disponibles maintenant</button>
+  <input class="search-input" type="text" placeholder="Rechercher un profil..." oninput="rechercher(this.value)" id="searchInput">
+</div>
+
+<!-- CONTENU PRINCIPAL -->
+<div class="main">
+  <div class="section-titre">
+    <h2>Profils disponibles <span id="compteur">— 8 profils</span></h2>
+    <div class="badge-dispo">Données actualisées en temps réel</div>
+  </div>
+
+  <div class="grille" id="grille">
+    <!-- Les cartes sont générées en JS -->
+  </div>
+
+  <!-- SECTION DEMANDES EN COURS -->
+  <div class="demandes-section">
+    <div class="section-titre">
+      <h2>Mes demandes en cours <span>— 2 demandes</span></h2>
+    </div>
+    <div class="demande-card">
+      <div class="demande-status confirmee">Confirmée</div>
+      <div class="demande-info">
+        <strong>Kevin · MT-031 — Monteur N2</strong>
+        <span>Mission : Chantier Ivry-sur-Seine · du 12 au 30 mai 2026</span>
+      </div>
+      <div class="demande-date">Demandé le 8 mai</div>
+    </div>
+    <div class="demande-card">
+      <div class="demande-status attente">En attente</div>
+      <div class="demande-info">
+        <strong>Rachid · AM-009 — Aide-monteur</strong>
+        <span>Mission : Boulogne-Billancourt · dès que possible</span>
+      </div>
+      <div class="demande-date">Demandé le 10 mai</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Intérim Qualité — Groupe IP · Agence Paris, 27 rue Balard 75015 Paris · 01 58 45 26 10</p>
+  <a href="#">Contacter l'agence</a>
+</footer>
+
+<!-- BARRE SELECTION FLOTTANTE -->
+<div class="barre-selection" id="barreSelection">
+  <div class="barre-selection-left">
+    <strong id="barreTexte">1 profil sélectionné</strong>
+    <p>Votre demande sera transmise à l'agence pour validation</p>
+  </div>
+  <div class="barre-btns">
+    <button class="btn-annuler" onclick="toutDeselectionner()">Annuler</button>
+    <button class="btn-demander" onclick="ouvrirModalDemande()">→ Faire une demande de mission</button>
+  </div>
+</div>
+
+<!-- MODAL DETAIL -->
+<div class="modal-overlay" id="modalDetail">
+  <div class="modal" id="modalDetailContent">
+    <div class="modal-header">
+      <div>
+        <h3 id="modalNom">—</h3>
+        <p id="modalQualif">—</p>
+      </div>
+      <button class="modal-close" onclick="fermerModal('modalDetail')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">Formations & certifications</div>
+        <div class="modal-formations" id="modalFormations"></div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">Informations</div>
+        <div class="modal-info-grid" id="modalInfoGrid"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-btn-sec" onclick="fermerModal('modalDetail')">Fermer</button>
+      <button class="modal-btn-prim" id="modalBtnChoisir" onclick="choisirDepuisModal()">Sélectionner ce profil</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DEMANDE -->
+<div class="modal-overlay" id="modalDemande">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <h3>Demande de mission</h3>
+        <p id="modalDemandeNoms">—</p>
+      </div>
+      <button class="modal-close" onclick="fermerModal('modalDemande')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">Profils sélectionnés</div>
+        <div id="modalDemandeProfiles" class="modal-formations"></div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">Détails de la mission</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div>
+            <label style="font-size:12px;font-weight:600;color:var(--gris);display:block;margin-bottom:4px;">Lieu du chantier</label>
+            <input type="text" placeholder="Ex : Ivry-sur-Seine" style="width:100%;padding:9px 12px;border:1.5px solid var(--gris-bord);border-radius:8px;font-family:'Barlow',sans-serif;font-size:14px;color:var(--texte);outline:none;" onfocus="this.style.borderColor='var(--bleu-light)'" onblur="this.style.borderColor='var(--gris-bord)'">
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div>
+              <label style="font-size:12px;font-weight:600;color:var(--gris);display:block;margin-bottom:4px;">Date de début</label>
+              <input type="date" style="width:100%;padding:9px 12px;border:1.5px solid var(--gris-bord);border-radius:8px;font-family:'Barlow',sans-serif;font-size:14px;color:var(--texte);outline:none;" onfocus="this.style.borderColor='var(--bleu-light)'" onblur="this.style.borderColor='var(--gris-bord)'">
+            </div>
+            <div>
+              <label style="font-size:12px;font-weight:600;color:var(--gris);display:block;margin-bottom:4px;">Date de fin</label>
+              <input type="date" style="width:100%;padding:9px 12px;border:1.5px solid var(--gris-bord);border-radius:8px;font-family:'Barlow',sans-serif;font-size:14px;color:var(--texte);outline:none;" onfocus="this.style.borderColor='var(--bleu-light)'" onblur="this.style.borderColor='var(--gris-bord)'">
+            </div>
+          </div>
+          <div>
+            <label style="font-size:12px;font-weight:600;color:var(--gris);display:block;margin-bottom:4px;">Commentaires / informations chantier</label>
+            <textarea rows="3" placeholder="Ex : accès zone classée, horaires décalés, besoins spécifiques..." style="width:100%;padding:9px 12px;border:1.5px solid var(--gris-bord);border-radius:8px;font-family:'Barlow',sans-serif;font-size:14px;color:var(--texte);outline:none;resize:vertical;" onfocus="this.style.borderColor='var(--bleu-light)'" onblur="this.style.borderColor='var(--gris-bord)'"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-btn-sec" onclick="fermerModal('modalDemande')">Annuler</button>
+      <button class="modal-btn-prim" onclick="confirmerDemande()">Envoyer la demande à l'agence →</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CONFIRMATION -->
+<div class="modal-overlay" id="modalConfirm">
+  <div class="modal" style="padding:2rem;">
+    <div class="modal-confirm-icon">✅</div>
+    <div class="modal-confirm-title">Demande envoyée !</div>
+    <p class="modal-confirm-text" style="margin-top:8px;">
+      Votre demande a bien été transmise à l'agence Intérim Qualité Paris.<br>
+      Un conseiller vous recontactera sous <strong>2h ouvrées</strong> pour confirmer la mission.
+    </p>
+    <div style="margin-top:1.5rem;padding:1rem;background:var(--gris-clair);border-radius:8px;text-align:center;">
+      <p style="font-size:12px;color:var(--gris);">Agence Paris · <strong style="color:var(--texte);">01 58 45 26 10</strong> · paris@groupeip.fr</p>
+    </div>
+    <div style="margin-top:1rem;text-align:center;">
+      <button class="modal-btn-prim" style="width:100%;" onclick="fermerModal('modalConfirm')">Fermer</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const profils = [
+  { id:1, prenom:'Julien', matricule:'MT-042', initiales:'JU', type:'monteur', qualif:'Monteur N2', status:'disponible', dispo:'Disponible dès lundi', zone:'Paris / Île-de-France', exp:'7 ans', formations:['Travail en hauteur','Port du harnais','MASE','Chef de chantier'], distance:'15 km' },
+  { id:2, prenom:'Marco', matricule:'AM-017', initiales:'MA', type:'aide', qualif:'Aide-monteur', status:'disponible', dispo:'Disponible cette semaine', zone:'Val-de-Marne / 94', exp:'3 ans', formations:['CACES nacelle','Travail en hauteur','Port du harnais'], distance:'22 km' },
+  { id:3, prenom:'Driss', matricule:'MT-058', initiales:'DR', type:'monteur', qualif:'Monteur N3 — Chef équipe', status:'disponible', dispo:'Disponible dès maintenant', zone:'Hauts-de-Seine / 92', exp:'11 ans', formations:['Travail en hauteur','MASE','CEFRI','Habilitation nucléaire N2','Chef de chantier'], distance:'8 km' },
+  { id:4, prenom:'Karim', matricule:'MN-023', initiales:'KA', type:'manutentionnaire', qualif:'Manutentionnaire', status:'disponible', dispo:'Disponible dès maintenant', zone:'Seine-Saint-Denis / 93', exp:'2 ans', formations:['Travail en hauteur','Port du harnais','CACES 3'], distance:'31 km' },
+  { id:5, prenom:'Théo', matricule:'MT-034', initiales:'TH', type:'monteur', qualif:'Monteur N1', status:'disponible', dispo:'Disponible semaine prochaine', zone:'Paris / 75', exp:'2 ans', formations:['Travail en hauteur','Port du harnais'], distance:'5 km' },
+  { id:6, prenom:'Sébastien', matricule:'AM-029', initiales:'SB', type:'aide', qualif:'Aide-monteur', status:'bientot', dispo:'Disponible à partir du 20 mai', zone:'Essonne / 91', exp:'5 ans', formations:['Travail en hauteur','CACES nacelle','Port du harnais','MASE'], distance:'28 km' },
+  { id:7, prenom:'Yannick', matricule:'MT-011', initiales:'YA', type:'monteur', qualif:'Monteur N2', status:'disponible', dispo:'Disponible dès maintenant', zone:'Yvelines / 78', exp:'9 ans', formations:['Travail en hauteur','MASE','Port du harnais','Chef de chantier'], distance:'42 km' },
+  { id:8, prenom:'Nassim', matricule:'MN-041', initiales:'NA', type:'manutentionnaire', qualif:'Manutentionnaire', status:'disponible', dispo:'Disponible dès lundi', zone:'Val-d\'Oise / 95', exp:'1 an', formations:['Travail en hauteur','Port du harnais'], distance:'38 km' },
+];
+
+let selection = new Set();
+let filtreActif = 'tous';
+let recherche = '';
+let profilModal = null;
+
+function renderCarte(p) {
+  const isSelected = selection.has(p.id);
+  const statusColor = p.status === 'disponible' ? 'disponible' : 'bientot';
+  const formationsTags = p.formations.map(f => `<span class="formation-tag">${f}</span>`).join('');
+  return `
+  <div class="carte ${isSelected ? 'selected' : ''}" id="carte-${p.id}" onclick="toggleSelection(${p.id})">
+    <div class="carte-header">
+      <div class="avatar">${p.initiales}</div>
+      <div class="carte-identite">
+        <div class="carte-prenom">${p.prenom}</div>
+        <div class="carte-matricule">${p.matricule}</div>
+      </div>
+      <div class="status-dot ${statusColor}"></div>
+    </div>
+    <div class="carte-body">
+      <div class="qualif-badge">⚙ ${p.qualif}</div>
+      <div class="formations">${formationsTags}</div>
+      <div class="infos-bas">
+        <div class="info-ligne">
+          <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span><strong>${p.dispo}</strong></span>
+        </div>
+        <div class="info-ligne">
+          <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>${p.zone}</span>
+        </div>
+        <div class="info-ligne">
+          <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <span>${p.exp} d'expérience</span>
+        </div>
+      </div>
+    </div>
+    <div class="carte-footer" onclick="event.stopPropagation()">
+      <button class="btn-detail" onclick="ouvrirDetail(${p.id})">Voir le profil</button>
+      <button class="btn-choisir" onclick="selectionnerEtOuvrir(${p.id})">${isSelected ? '✓ Sélectionné' : 'Choisir ce profil'}</button>
+    </div>
+  </div>`;
+}
+
+function profiFiltres() {
+  return profils.filter(p => {
+    const matchFiltre = filtreActif === 'tous' || filtreActif === p.type || (filtreActif === 'disponible' && p.status === 'disponible');
+    const matchRecherche = recherche === '' || p.prenom.toLowerCase().includes(recherche) || p.qualif.toLowerCase().includes(recherche) || p.matricule.toLowerCase().includes(recherche) || p.formations.some(f => f.toLowerCase().includes(recherche));
+    return matchFiltre && matchRecherche;
+  });
+}
+
+function renderGrille() {
+  const liste = profiFiltres();
+  const grille = document.getElementById('grille');
+  grille.innerHTML = liste.map(renderCarte).join('');
+  document.getElementById('compteur').textContent = `— ${liste.length} profil${liste.length > 1 ? 's' : ''}`;
+  document.getElementById('stat-dispo').textContent = profils.filter(p => p.status === 'disponible').length;
+}
+
+function toggleSelection(id) {
+  if (selection.has(id)) { selection.delete(id); } else { selection.add(id); }
+  renderGrille();
+  majBarre();
+}
+
+function selectionnerEtOuvrir(id) {
+  if (!selection.has(id)) selection.add(id);
+  renderGrille();
+  majBarre();
+}
+
+function majBarre() {
+  const barre = document.getElementById('barreSelection');
+  const n = selection.size;
+  if (n > 0) {
+    barre.classList.add('visible');
+    document.getElementById('barreTexte').textContent = `${n} profil${n > 1 ? 's' : ''} sélectionné${n > 1 ? 's' : ''}`;
+  } else {
+    barre.classList.remove('visible');
+  }
+}
+
+function toutDeselectionner() {
+  selection.clear();
+  renderGrille();
+  majBarre();
+}
+
+function filtrer(type, btn) {
+  filtreActif = type;
+  document.querySelectorAll('.filtre-btn').forEach(b => b.classList.remove('actif'));
+  btn.classList.add('actif');
+  renderGrille();
+}
+
+function rechercher(val) {
+  recherche = val.toLowerCase();
+  renderGrille();
+}
+
+function ouvrirDetail(id) {
+  const p = profils.find(x => x.id === id);
+  profilModal = p;
+  document.getElementById('modalNom').textContent = `${p.prenom} · ${p.matricule}`;
+  document.getElementById('modalQualif').textContent = p.qualif + ' · ' + p.exp + ' d\'expérience';
+  document.getElementById('modalFormations').innerHTML = p.formations.map(f => `<span class="modal-formation">✓ ${f}</span>`).join('');
+  document.getElementById('modalInfoGrid').innerHTML = `
+    <div class="modal-info-cell"><div class="label">Disponibilité</div><div class="value">${p.dispo}</div></div>
+    <div class="modal-info-cell"><div class="label">Zone</div><div class="value">${p.zone}</div></div>
+    <div class="modal-info-cell"><div class="label">Expérience</div><div class="value">${p.exp}</div></div>
+    <div class="modal-info-cell"><div class="label">Matricule</div><div class="value">${p.matricule}</div></div>
+  `;
+  const btn = document.getElementById('modalBtnChoisir');
+  btn.textContent = selection.has(id) ? '✓ Déjà sélectionné' : 'Sélectionner ce profil';
+  document.getElementById('modalDetail').classList.add('open');
+}
+
+function choisirDepuisModal() {
+  if (profilModal) {
+    selection.add(profilModal.id);
+    renderGrille();
+    majBarre();
+    document.getElementById('modalBtnChoisir').textContent = '✓ Profil sélectionné';
+  }
+}
+
+function ouvrirModalDemande() {
+  const noms = [...selection].map(id => {
+    const p = profils.find(x => x.id === id);
+    return p ? `${p.prenom} (${p.qualif})` : '';
+  }).filter(Boolean);
+  document.getElementById('modalDemandeNoms').textContent = noms.join(', ');
+  document.getElementById('modalDemandeProfiles').innerHTML = [...selection].map(id => {
+    const p = profils.find(x => x.id === id);
+    return p ? `<span class="modal-formation">${p.prenom} · ${p.matricule} · ${p.qualif}</span>` : '';
+  }).join('');
+  document.getElementById('modalDemande').classList.add('open');
+}
+
+function confirmerDemande() {
+  document.getElementById('modalDemande').classList.remove('open');
+  setTimeout(() => {
+    document.getElementById('modalConfirm').classList.add('open');
+    selection.clear();
+    renderGrille();
+    majBarre();
+  }, 200);
+}
+
+function fermerModal(id) {
+  document.getElementById(id).classList.remove('open');
+}
+
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('open');
+  });
+});
+
+renderGrille();
+</script>
+</body>
+</html>
