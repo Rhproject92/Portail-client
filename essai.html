@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Essai gratuit — RH Project</title>
+<meta name="description" content="Testez RH Project gratuitement pendant 5 jours, sans carte bancaire.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blu:#1B4FBE; --blu-d:#143a8c; --blu-l:#eaf0fc;
+    --grn:#0F9E72; --grn-l:#e7f6f0;
+    --ink:#15203a; --ink2:#3d4a63; --ink3:#7a8499;
+    --bg:#f5f7fb; --card:#ffffff; --bdr:#e3e8f2;
+    --red:#d92d20; --red-l:#fdecea;
+    --r:14px; --r-sm:10px;
+    --sh:0 1px 2px rgba(21,32,58,.04),0 8px 28px rgba(21,32,58,.08);
+    --tr:.18s cubic-bezier(.4,0,.2,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Inter',system-ui,sans-serif;color:var(--ink);
+    background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+  .wrap{
+    display:grid;grid-template-columns:1.05fr .95fr;min-height:100vh;
+  }
+
+  /* ── Panneau gauche : argumentaire ── */
+  .pitch{
+    background:linear-gradient(155deg,var(--blu) 0%,var(--blu-d) 100%);
+    color:#fff;padding:56px 56px 48px;position:relative;overflow:hidden;
+    display:flex;flex-direction:column;
+  }
+  .pitch::after{
+    content:"";position:absolute;right:-120px;top:-120px;width:340px;height:340px;
+    background:radial-gradient(circle,rgba(15,158,114,.55),transparent 70%);
+    border-radius:50%;
+  }
+  .brand{display:flex;align-items:center;gap:11px;font-family:'Sora',sans-serif;
+    font-weight:800;font-size:21px;letter-spacing:-.4px;position:relative;z-index:1}
+  .brand .dot{width:34px;height:34px;border-radius:9px;background:#fff;
+    display:grid;place-items:center;color:var(--blu);font-size:18px}
+  .pitch-body{margin-top:auto;position:relative;z-index:1}
+  .eyebrow{font-family:'Sora',sans-serif;font-weight:600;font-size:12px;
+    letter-spacing:1.8px;text-transform:uppercase;color:#bcd0f5;margin-bottom:18px}
+  .pitch h1{font-family:'Sora',sans-serif;font-weight:800;font-size:38px;
+    line-height:1.12;letter-spacing:-1px;margin-bottom:18px}
+  .pitch h1 em{font-style:normal;color:#7df0c8}
+  .pitch p.lead{font-size:16px;color:#dce6fb;max-width:30ch;margin-bottom:34px}
+  .checks{list-style:none;display:flex;flex-direction:column;gap:14px}
+  .checks li{display:flex;align-items:flex-start;gap:12px;font-size:15px;color:#eaf1fd}
+  .checks .ic{flex:0 0 22px;height:22px;border-radius:6px;background:rgba(125,240,200,.22);
+    color:#7df0c8;display:grid;place-items:center;font-size:13px;font-weight:700;margin-top:1px}
+  .pitch-foot{margin-top:40px;font-size:13px;color:#9fb6e6;position:relative;z-index:1}
+
+  /* ── Panneau droit : formulaire ── */
+  .form-col{display:flex;align-items:center;justify-content:center;padding:48px 40px}
+  .card{background:var(--card);border:1px solid var(--bdr);border-radius:var(--r);
+    box-shadow:var(--sh);width:100%;max-width:440px;padding:38px 38px 34px}
+  .sector-tag{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;
+    font-weight:600;padding:5px 11px;border-radius:999px;margin-bottom:18px}
+  .sector-tag.btp{background:var(--blu-l);color:var(--blu)}
+  .sector-tag.med{background:var(--grn-l);color:var(--grn)}
+  .sector-tag.net{background:#eaf6f0;color:#0f9e72}
+  .card h2{font-family:'Sora',sans-serif;font-weight:700;font-size:24px;
+    letter-spacing:-.5px;margin-bottom:6px}
+  .card .sub{font-size:14px;color:var(--ink3);margin-bottom:26px}
+  .fg{margin-bottom:15px}
+  .fg label{display:block;font-size:13px;font-weight:600;color:var(--ink2);margin-bottom:6px}
+  .fg label .opt{font-weight:400;color:var(--ink3)}
+  .fg input{width:100%;padding:11px 13px;border:1.5px solid var(--bdr);border-radius:var(--r-sm);
+    font-family:inherit;font-size:14.5px;color:var(--ink);background:#fcfdff;transition:var(--tr)}
+  .fg input:focus{outline:none;border-color:var(--blu);background:#fff;
+    box-shadow:0 0 0 3px rgba(27,79,190,.12)}
+  .fg input::placeholder{color:#aeb6c7}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+  .submit{width:100%;margin-top:10px;padding:14px;border:none;border-radius:var(--r-sm);
+    background:var(--blu);color:#fff;font-family:'Sora',sans-serif;font-weight:600;
+    font-size:15.5px;cursor:pointer;transition:var(--tr);display:flex;align-items:center;
+    justify-content:center;gap:9px}
+  .submit:hover:not(:disabled){background:var(--blu-d);transform:translateY(-1px)}
+  .submit:disabled{opacity:.6;cursor:default}
+  .err{display:none;background:var(--red-l);color:var(--red);font-size:13px;
+    padding:10px 13px;border-radius:var(--r-sm);margin-bottom:16px;line-height:1.45}
+  .reassure{margin-top:18px;font-size:12.5px;color:var(--ink3);text-align:center;line-height:1.6}
+  .reassure b{color:var(--ink2);font-weight:600}
+  .spinner{width:17px;height:17px;border:2.5px solid rgba(255,255,255,.4);
+    border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* ── Écran de succès ── */
+  .done{text-align:center;padding:14px 4px}
+  .done .badge{width:68px;height:68px;border-radius:50%;background:var(--grn-l);
+    color:var(--grn);display:grid;place-items:center;font-size:32px;margin:0 auto 20px;
+    animation:pop .4s cubic-bezier(.2,1.4,.4,1)}
+  @keyframes pop{from{transform:scale(.5);opacity:0}to{transform:scale(1);opacity:1}}
+  .done h2{font-family:'Sora',sans-serif;font-size:23px;margin-bottom:10px}
+  .done p{font-size:14.5px;color:var(--ink2);margin-bottom:8px}
+  .done .redir{font-size:13px;color:var(--ink3);margin-top:18px}
+
+  @media(max-width:880px){
+    .wrap{grid-template-columns:1fr}
+    .pitch{padding:36px 28px 30px;min-height:auto}
+    .pitch-body{margin-top:26px}
+    .pitch h1{font-size:30px}
+    .checks{display:none}
+    .form-col{padding:30px 20px 44px}
+    .card{padding:30px 24px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- Argumentaire -->
+  <section class="pitch">
+    <div class="brand"><span class="dot">◆</span> RH Project</div>
+    <div class="pitch-body">
+      <div class="eyebrow" id="eyebrow">Un service RH, sans le recruter</div>
+      <h1 id="pitch-titre">L'expertise d'un <em>service RH</em>. La simplicité d'un outil.</h1>
+      <p class="lead" id="pitch-lead">Quinze ans de pratique RH de terrain, condensés dans un outil qui maîtrise vos obligations légales — quel que soit votre métier.</p>
+      <ul class="checks" id="pitch-checks"></ul>
+    </div>
+    <div class="pitch-foot">Une question ? support@rhproject.fr</div>
+  </section>
+
+  <!-- Formulaire -->
+  <section class="form-col">
+    <div class="card" id="card">
+      <span class="sector-tag btp" id="sectorTag">● Module BTP / Chantiers</span>
+      <h2>Mettez l'expertise à l'essai</h2>
+      <p class="sub">Quelques informations sur votre entreprise, et vous accédez à l'application immédiatement.</p>
+
+      <div class="err" id="err"></div>
+
+      <div class="fg">
+        <label for="f-entreprise">Nom de l'entreprise</label>
+        <input id="f-entreprise" type="text" placeholder="Ex. Bâtiment Durand SARL" autocomplete="organization">
+      </div>
+      <div class="fg">
+        <label for="f-siret">SIRET <span class="opt">(14 chiffres)</span></label>
+        <input id="f-siret" type="text" inputmode="numeric" placeholder="123 456 789 00012" autocomplete="off">
+      </div>
+      <div class="fg">
+        <label for="f-resp">Responsable</label>
+        <input id="f-resp" type="text" placeholder="Prénom et nom" autocomplete="name">
+      </div>
+      <div class="row2">
+        <div class="fg">
+          <label for="f-email">Email professionnel</label>
+          <input id="f-email" type="email" placeholder="vous@entreprise.fr" autocomplete="email">
+        </div>
+        <div class="fg">
+          <label for="f-tel">Téléphone</label>
+          <input id="f-tel" type="tel" placeholder="06 12 34 56 78" autocomplete="tel">
+        </div>
+      </div>
+
+      <button class="submit" id="submit">Accéder à mon essai gratuit</button>
+      <p class="reassure">En continuant, un compte est créé pour <b>5 jours d'essai</b>.<br>Vos identifiants vous sont aussi envoyés par email.</p>
+    </div>
+  </section>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  // ── Configuration (identique au back-office) ──
+  const SUPABASE_URL  = 'https://trnfewfobndbzdhzwqnc.supabase.co';
+  const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRybmZld2ZvYm5kYnpkaHp3cW5jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUxMjI1MjIsImV4cCI6MjA5MDY5ODUyMn0.ffMRqvPukKPwqVJqce_z9bP5Y5MUveJHLmNzC6uaPfY';
+  const APP_URL       = 'https://www.rhproject.fr/app.html';
+
+  const _sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON, { auth:{ persistSession:true } });
+
+  // ── Secteur depuis l'URL (?secteur=BTP|MEDICAL|GENERALISTE) ──
+  const params = new URLSearchParams(location.search);
+  const secteurRaw = (params.get('secteur') || '').toUpperCase();
+  const secteur = secteurRaw === 'MEDICAL' ? 'MEDICAL'
+                : secteurRaw === 'BTP' ? 'BTP'
+                : secteurRaw === 'NETTOYAGE' ? 'NETTOYAGE'
+                : 'GENERALISTE';
+  const emailPrefill = params.get('email') || '';
+
+  // ── Contenu adapté à chaque secteur (une page, trois visages) ──
+  const CONTENUS = {
+    BTP: {
+      eyebrow: 'Un service RH chantier, sans le recruter',
+      titre: "L'expertise RH du <em>bâtiment</em>, dans un seul outil.",
+      lead: "Pensé pour les entreprises du BTP : vos chantiers, vos intérimaires et vos obligations terrain, réunis et maîtrisés.",
+      tag: '● Module BTP / Chantiers',
+      tagClass: 'sector-tag btp',
+      checks: [
+        "Suivi des chantiers et affectations de vos équipes",
+        "Gestion des intérimaires en période de pointe",
+        "Badges, habilitations et partage de documents par agence",
+        "Conforme au droit français : DUERP, titres de séjour, conventions"
+      ]
+    },
+    MEDICAL: {
+      eyebrow: 'Un service RH médical, sans le recruter',
+      titre: "L'expertise RH de l'<em>imagerie médicale</em>, dans un seul outil.",
+      lead: "Conçu pour les cabinets d'imagerie : gardes, astreintes et radioprotection gérées avec la rigueur du secteur.",
+      tag: '● Module Médical / Imagerie',
+      tagClass: 'sector-tag med',
+      checks: [
+        "Gardes et astreintes référencées (IDCC 1147)",
+        "Suivi de la radioprotection et des plannings par roulement",
+        "Visites médicales renforcées et échéances surveillées",
+        "Conforme à la réglementation du secteur médical"
+      ]
+    },
+    NETTOYAGE: {
+      eyebrow: 'Un service RH propreté, sans le recruter',
+      titre: "L'expertise RH du <em>nettoyage</em>, dans un seul outil.",
+      lead: "Pensé pour les entreprises de propreté : grille CCN, équipements et formations de vos agents, réunis et maîtrisés.",
+      tag: '● Module Nettoyage / Propreté',
+      tagClass: 'sector-tag net',
+      checks: [
+        "Grille de salaires CCN Propreté (IDCC 3043) à jour",
+        "Équipements de protection adaptés (gants, masques, tenues)",
+        "Centres de formation agréés FEP / INHNI référencés",
+        "Conforme au droit français : DUERP, visites médicales, conventions"
+      ]
+    },
+    GENERALISTE: {
+      eyebrow: 'Un service RH, sans le recruter',
+      titre: "L'expertise d'un <em>service RH</em>. La simplicité d'un outil.",
+      lead: "Quinze ans de pratique RH de terrain, condensés dans un outil qui maîtrise vos obligations légales — quel que soit votre métier.",
+      tag: '● Solution RH complète',
+      tagClass: 'sector-tag btp',
+      checks: [
+        "Salariés, contrats, congés et documents au même endroit",
+        "Pensé par une professionnelle RH, pas par des développeurs",
+        "Conforme au droit français : DUERP, visites médicales, conventions",
+        "S'adapte à votre secteur d'activité"
+      ]
+    }
+  };
+
+  // ── Applique le contenu du secteur ──
+  (function initSecteur(){
+    const c = CONTENUS[secteur] || CONTENUS.GENERALISTE;
+    document.getElementById('eyebrow').textContent = c.eyebrow;
+    document.getElementById('pitch-titre').innerHTML = c.titre;
+    document.getElementById('pitch-lead').textContent = c.lead;
+    document.getElementById('pitch-checks').innerHTML =
+      c.checks.map(t => '<li><span class="ic">✓</span><span>'+t+'</span></li>').join('');
+    const tag = document.getElementById('sectorTag');
+    tag.textContent = c.tag;
+    tag.className = c.tagClass;
+    if (emailPrefill) document.getElementById('f-email').value = emailPrefill;
+  })();
+
+  // ── Helpers ──
+  const $ = id => document.getElementById(id);
+  function showErr(msg){ const e=$('err'); e.textContent=msg; e.style.display='block'; e.scrollIntoView({behavior:'smooth',block:'center'}); }
+  function hideErr(){ $('err').style.display='none'; }
+  function datePlusJours(n){ const d=new Date(); d.setDate(d.getDate()+n);
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+  function validEmail(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+
+  // ── Soumission ──
+  $('submit').addEventListener('click', inscrire);
+  document.querySelectorAll('input').forEach(inp =>
+    inp.addEventListener('keydown', e => { if (e.key === 'Enter') inscrire(); }));
+
+  async function inscrire(){
+    hideErr();
+    const entreprise = $('f-entreprise').value.trim();
+    const siret      = $('f-siret').value.replace(/\s/g,'').trim();
+    const resp       = $('f-resp').value.trim();
+    const email      = $('f-email').value.trim();
+    const tel        = $('f-tel').value.trim();
+
+    // Validation
+    if (!entreprise) return showErr("Indiquez le nom de votre entreprise.");
+    if (!resp)       return showErr("Indiquez le nom du responsable.");
+    if (!validEmail(email)) return showErr("L'adresse email ne semble pas valide.");
+    if (siret && !/^\d{14}$/.test(siret)) return showErr("Le SIRET doit comporter 14 chiffres (ou laissez-le vide).");
+
+    const btn = $('submit');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> Création de votre espace…';
+
+    // Découpe prénom / nom à partir du responsable
+    const parts = resp.split(/\s+/);
+    const prenom = parts.shift() || '';
+    const nom = parts.join(' ');
+
+    // Mot de passe temporaire (le client le changera à la 1re connexion)
+    const arr = new Uint8Array(12); crypto.getRandomValues(arr);
+    const tempPwd = Array.from(arr).map(b=>b.toString(36)).join('').substring(0,10)+'Rh1!';
+
+    try {
+      // 1) Création du compte via l'Edge Function create-account (compte confirmé d'office)
+      const res = await fetch(SUPABASE_URL + '/functions/v1/inscription-essai', {
+        method:'POST',
+        headers:{ 'Content-Type':'application/json', 'apikey':SUPABASE_ANON,
+                  'Authorization':'Bearer '+SUPABASE_ANON },
+        body: JSON.stringify({ email, password:tempPwd, metadata:{ prenom, nom, entreprise, tel } })
+      });
+      let payload = {};
+      try { payload = await res.json(); } catch(_){}
+
+      if (!res.ok || !payload.user) {
+        if (payload.code === 'EMAIL_EXISTS' || /exist|already|registered/i.test(payload.error||'')) {
+          return finErreur(btn, "Un compte existe déjà avec cet email. Connectez-vous directement à l'application.");
+        }
+        return finErreur(btn, payload.error || "La création du compte a échoué. Réessayez dans un instant.");
+      }
+
+      const uid = payload.user.id;
+      const fin = datePlusJours(5);
+
+      // 2) Fiche client en base — même structure que le back-office (cle:'contrat')
+      const contrat = {
+        email, entreprise, prenom, nom, tel,
+        siret: siret || '',
+        formule: 'F1',                       // formule par défaut le temps de l'essai
+        engagement_mois: 12,
+        mode_paiement: 'a_definir',
+        origine: 'site',                     // vient du site → étiquette « Site »
+        statut: 'essai',
+        secteur, // Majuscules (BTP/MEDICAL/GENERALISTE) — cohérent avec admin.html et app.html,
+                 // pour que l'accès au module métier ne se coupe pas si le client passe payant
+        trial: { secteur, debut: datePlusJours(0), fin },
+        paiement_confirme: false,
+        options_actives: [],
+        date_inscription: new Date().toISOString()
+      };
+      await _sb.from('donnees_rh').upsert(
+        { client_id: uid, cle:'contrat', valeur: contrat, updated_at:new Date().toISOString() },
+        { onConflict:'client_id,cle' }
+      );
+
+      // 3) Historique pour le back-office
+      await _sb.from('donnees_rh').upsert(
+        { client_id: uid, cle:'admin_notes',
+          valeur:{ texte:'', historique:[{ date:new Date().toLocaleString('fr-FR'),
+            action:'Inscription essai gratuit ('+secteur+') via le site — fin le '+fin }] },
+          updated_at:new Date().toISOString() },
+        { onConflict:'client_id,cle' }
+      );
+
+      // 4) Connexion immédiate puis redirection vers l'app
+      await _sb.auth.signInWithPassword({ email, password:tempPwd });
+      succes(email);
+
+    } catch (e) {
+      finErreur(btn, "Une erreur est survenue : "+(e.message||e));
+    }
+  }
+
+  function finErreur(btn, msg){
+    btn.disabled = false;
+    btn.textContent = 'Accéder à mon essai gratuit';
+    showErr(msg);
+  }
+
+  function succes(email){
+    document.getElementById('card').innerHTML = `
+      <div class="done">
+        <div class="badge">✓</div>
+        <h2>Votre espace est prêt</h2>
+        <p>Bienvenue ! Votre essai gratuit de 5 jours démarre maintenant.</p>
+        <p>Un email avec vos identifiants part vers <b>${email}</b>.</p>
+        <p class="redir">Redirection vers l'application…</p>
+      </div>`;
+    setTimeout(()=>{ location.href = APP_URL; }, 2200);
+  }
+</script>
+</body>
+</html>
