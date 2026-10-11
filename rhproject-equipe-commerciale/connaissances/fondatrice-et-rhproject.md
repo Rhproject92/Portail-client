@@ -1,6 +1,6 @@
 # La fondatrice et RHproject — fiche à compléter et à valider
 
-> Cette fiche est la source de vérité sur le produit et sur la fondatrice. Les agents n'ont le droit d'affirmer que ce qui est écrit ici et marqué **validé**. Tout le reste est **à compléter**.
+> Cette fiche synthétise la fondatrice et le positionnement de RHproject. Le **détail complet du produit** (fonctions, écrans, règles, prix, limites) est dans le dossier `../produit/`, issu de l'analyse de l'application. Les éléments commerciaux (preuves clients, cible prioritaire, objections) restent **à compléter par la fondatrice**.
 
 ## La fondatrice
 
@@ -19,16 +19,16 @@
 
 | Élément | Valeur |
 |---|---|
-| Ce que fait le produit en une phrase | à compléter |
+| Ce que fait le produit en une phrase | « Logiciel RH pour TPE et PME : salariés, contrats, congés et alertes légales depuis un seul outil » (description de l'application) ; avec modules sectoriels BTP/échafaudage et Nettoyage |
 | Pour qui (entreprises d'échafaudage ? BTP ? autres ?) | à compléter |
-| Fonctions principales (ex. habilitations et échéances, planning, dossiers salariés) | à compléter, **ne pas supposer** |
+| Fonctions principales | Voir `produit/01` à `produit/05` (confirmées par l'application) |
 | Ce que le produit ne fait pas | à compléter |
-| Prix et formules | à compléter |
-| Durée de mise en place, essai gratuit éventuel | à compléter |
+| Prix et formules | Autonomie 199 €/mois, Sérénité 390 €/mois, Pilotage 1 500 €/mois, Nettoyage 249 €/mois, + 900 € de démarrage (Pilotage : 900 € dans la configuration de paiement mais absent de la fiche offre, à confirmer) ; options 14,99 à 49,90 €/mois (voir `produit/01` §1 et points d'attention) |
+| Durée de mise en place, essai gratuit éventuel | Sérénité : opérationnel en 48/72 h après réception des données ; essai gratuit sur invitation (`produit/04` §4) |
 | Preuves : clients, chiffres, témoignages utilisables | à compléter |
 | Concurrents rencontrés | à compléter |
 | Pourquoi RHproject plutôt qu'Excel ou un logiciel RH généraliste | à compléter |
-| Démo : durée, déroulé, ce qu'on montre | à compléter |
+| Démo : durée, déroulé, ce qu'on montre | Propositions de déroulé par secteur dans `produit/05` ; à valider par la fondatrice |
 | Engagement, conditions de résiliation | à compléter |
 
 ## Hypothèses de travail (à confirmer ou supprimer)

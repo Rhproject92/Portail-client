@@ -17,16 +17,19 @@ flowchart TD
     D --> A4[Closer - réponses et prise de RDV]
     D --> A5[Préparateur de démo]
     D --> A6[Gardien - conformité et délivrabilité]
-    D --> A7[Formateur - veille et mise à jour des connaissances]
+    D --> A7[Veilleur - veille et mise à jour des connaissances]
+    D --> A8[Expert RHproject - démonstration et formation des utilisateurs]
     A1 --> B[(Base leads Baserow)]
     A2 --> B
     A3 --> B
     A4 --> B
     A4 -->|RDV| C[Cal.com + agenda fondatrice]
     A5 --> F
+    A8 --> F
+    A8 -. répond aux questions techniques .-> A4
     A6 -. peut bloquer tout envoi .-> A3
-    A7 -. alimente .-> K[(Base de connaissances)]
-    K --> D & A2 & A3 & A4 & A5
+    A7 -. alimente .-> K[(Base de connaissances + manuel produit)]
+    K --> D & A2 & A3 & A4 & A5 & A8
 ```
 
 ## 2. Rôles (détail des consignes dans `agents.md`)
@@ -40,7 +43,8 @@ flowchart TD
 | **Closer** | Lit les réponses, répond, lève les objections, propose des créneaux | réponse → RDV ou clôture | Réponses simples seules, cas sensibles escaladés |
 | **Préparateur de démo** | Fiche 1 page avant chaque démo | RDV → brief (entreprise, enjeux, questions, objections probables) | Autonome |
 | **Gardien** | Vérifie désinscriptions, base légale, santé des boîtes, qualité des messages | tous les envois → feu vert / blocage | Droit de veto |
-| **Formateur** | Alimente les connaissances (vente, métier, produit), teste les agents | sources → fiches mises à jour | Propose, le Directeur publie |
+| **Expert RHproject** | Connaît tout le produit (3 secteurs hors médical), prépare les démonstrations, forme les utilisateurs, répond aux questions techniques | manuels `produit/` → plans de formation, scripts de démo, réponses sourcées | Autonome sur le contenu, validé par le Directeur pour tout engagement |
+| **Veilleur** | Alimente les connaissances (vente, métier), suit les nouvelles versions de l'application, teste les agents | sources et nouveaux builds → fiches mises à jour | Propose, le Directeur publie |
 
 ## 3. Flux de travail
 
@@ -56,7 +60,7 @@ Le Directeur est le **seul interlocuteur** de la fondatrice. Deux canaux, sans c
 - **Vocal** : un assistant vocal (ElevenLabs Agents ou Vapi, configuré avec le prompt du Directeur et accès en lecture à la base de leads et aux KPI). Il peut appeler la fondatrice pour le point du matin, ou être appelé à tout moment (« où en est-on ? »). Il ne fait **pas** de démarchage téléphonique.
 - **Écrit** : un email quotidien et un canal de messagerie (Slack ou Telegram) pour les alertes.
 
-Il connaît la fondatrice (profil, préférences, style de décision) via `connaissances/fondatrice-et-rhproject.md`, qu'elle complète.
+Il connaît la fondatrice (profil, préférences, style de décision) via `connaissances/fondatrice-et-rhproject.md`, qu'elle complète. Il est aussi le **référent produit le plus pointu** : il maîtrise les manuels `produit/` (voir §10) et peut former des utilisateurs à l'oral.
 
 ## 5. Boîtes mail
 
@@ -93,14 +97,18 @@ SPF, DKIM, DMARC sur tous les domaines ; warm-up de 2 à 3 semaines avant volume
 |---|---|---|---|
 | 0 | La fondatrice complète `fondatrice-et-rhproject.md` (offre, prix, preuves) | 1 jour | Fondatrice |
 | 1 | Domaines, boîtes, SPF/DKIM/DMARC, début du warm-up | 2 jours + attente 2-3 semaines | Configuration |
-| 2 | Base de connaissances chargée, Directeur et agents créés avec leurs consignes | 3 jours | Configuration |
+| 2 | Base de connaissances et manuels `produit/` chargés, Directeur, Expert RHproject et agents créés avec leurs consignes ; test de connaissance de `produit/05` §7 | 3 jours | Configuration |
 | 3 | Sourcing + qualification d'un premier lot de 500 leads, relecture par la fondatrice | 4 jours | Éclaireur, Analyste |
 | 4 | Pilote : 30 à 50 contacts par jour, tout validé | 10 jours | Équipe |
 | 5 | Montée en volume et en autonomie | 14 jours | Équipe |
 
-## 9. Ce qu'il reste à décider (par la fondatrice)
+## 9. Connaissance du produit (dossier `produit/`)
 
-1. La fiche RHproject : fonctions, prix, preuves clients, cible exacte (entreprises d'échafaudage, BTP, ou autres).
+Les agents s'appuient sur une analyse complète de l'application RHproject (build 2026-04-08) : socle RH, options, secteurs **BTP/échafaudage**, **Nettoyage**, **Généraliste** (le secteur Médical est exclu), essai gratuit, guide de formation. Voir `produit/README.md` pour l'index et la matrice de couverture.
+
+## 10. Ce qu'il reste à décider (par la fondatrice)
+
+1. La fiche RHproject : les fonctions et les prix sont désormais connus par l'application ; il reste les **preuves clients**, la **cible commerciale prioritaire** et la **correction des points d'attention** (`produit/04` §6).
 2. Le domaine exact et les adresses mail.
 3. Le niveau d'autonomie voulu au départ.
 4. Le recours éventuel à un juriste pour valider la conformité (voir `connaissances/conformite.md`).

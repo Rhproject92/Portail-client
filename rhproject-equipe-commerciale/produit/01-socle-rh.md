@@ -20,7 +20,7 @@
 |---|---|---|
 | **Autonomie (F1)** | 199 €/mois + 900 € de démarrage, engagement 12 mois (3 288 € la 1re année, 2 388 € ensuite) | Logiciel RH complet, 17 documents légaux automatiques, 21 alertes légales, données cloud Europe, mises à jour légales, assistant IA RH. L'utilisateur configure seul. Options achetées à la carte. |
 | **Sérénité (F2)** — recommandée | 390 €/mois + 900 € de démarrage (5 580 € la 1re année, 4 680 € ensuite) | Tout F1 + **toutes les options incluses**, configuration complète par l'Expert RH, saisie des données initiales, formation de 1 h incluse, support prioritaire, opérationnel en 48/72 h après réception des données. |
-| **Pilotage (F3)** | 1 500 €/mois, engagement 12 mois (18 000 €/an) | Tout Sérénité + l'Expert RH gère tout chaque mois, réponse sous 24 h garantie, accompagnement illimité, veille juridique. |
+| **Pilotage (F3)** | 1 500 €/mois, engagement 12 mois (18 000 €/an) ; la fiche offre n'affiche pas de frais de démarrage alors que la configuration de paiement mentionne 900 € : **à confirmer** | Tout Sérénité + l'Expert RH gère tout chaque mois, réponse sous 24 h garantie, accompagnement illimité, veille juridique. |
 | **Nettoyage (F4)** | 249 €/mois + 900 € de démarrage, engagement 12 mois (3 888 € la 1re année, 2 988 € ensuite) | Logiciel RH complet, salariés illimités, suivi EPI et véhicules inclus, 17 documents légaux, hébergement Europe, options à la carte (Planning, Variables de paie…). **Sans Planning ni Variables de paie par défaut.** |
 
 **Options à la carte** (visibles dans Paramètres entreprise → section modules ; chaque option affiche un bouton « Activer … → » et passe, en principe, par un paiement sécurisé Stripe) :
