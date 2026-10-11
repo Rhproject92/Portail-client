@@ -17,8 +17,7 @@ Statut : issu de recherches web faites le 11/10/2026. Les sources sont surtout d
 
 ## Vocabulaire à maîtriser
 
-Échafaudage de pied, roulant, multidirectionnel, façadier ; monteur N1/N2/N3, chef d'équipe, aide-monteur ; montage / démontage / réception / vérification journalière ; EPI antichute, harnais ; CACES nacelle ; MASE ; CEFRI ; habilitation ; aptitude médicale ; intérim ; intempéries ; grands déplacements. (Plusieurs de ces termes apparaissent dans les profils du portail Intérim Qualité de ce dépôt.)
-
+Échafaudage de pied, roulant, multidirectionnel, façadier ; monteur N1/N2/N3, chef d'équipe, aide-monteur ; montage / démontage / réception / vérification journalière ; EPI antichute, harnais ; CACES nacelle ; MASE ; CEFRI ; habilitation ; aptitude médicale ; intérim ; intempéries ; grands déplacements.
 ## Pain points de gestion RH (PME du BTP)
 
 D'après des blogs d'éditeurs de logiciels RH BTP (par exemple [Obat](https://www.obat.fr/blog/logiciel-rh-btp/), [Le Blog du Dirigeant](https://www.leblogdudirigeant.com/digitalisation-rh-pme-btp-gestion-equipes/)) :

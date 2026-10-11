@@ -100,7 +100,7 @@ SPF, DKIM, DMARC sur tous les domaines ; warm-up de 2 à 3 semaines avant volume
 
 ## 9. Ce qu'il reste à décider (par la fondatrice)
 
-1. La fiche RHproject : fonctions, prix, preuves clients, cible exacte (entreprises d'échafaudage, BTP, ou aussi agences d'intérim).
+1. La fiche RHproject : fonctions, prix, preuves clients, cible exacte (entreprises d'échafaudage, BTP, ou autres).
 2. Le domaine exact et les adresses mail.
 3. Le niveau d'autonomie voulu au départ.
 4. Le recours éventuel à un juriste pour valider la conformité (voir `connaissances/conformite.md`).

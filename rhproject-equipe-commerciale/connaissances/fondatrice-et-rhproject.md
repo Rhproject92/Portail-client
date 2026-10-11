@@ -9,7 +9,7 @@
 | Nom | Soraya Proux |
 | Rôle | Fondatrice de RHproject, seule à faire les démonstrations |
 | Email | soraya.proux@rhproject.* (domaine exact à confirmer) |
-| Contexte connu | Adresse professionnelle liée à Groupe IP ; un portail client d'Intérim Qualité (agence d'intérim de monteurs d'échafaudage, Paris) existe dans ce même dépôt, ce qui suggère une expérience du secteur échafaudage / intérim |
+| Contexte | Tout le travail de l'équipe porte uniquement sur RHproject |
 | Préférence tutoiement / vouvoiement | à compléter |
 | Moment du point quotidien | à compléter |
 | Ce qu'elle veut décider elle-même | à compléter (prix, remises, nouveaux segments, contenu juridique ?) |
@@ -20,7 +20,7 @@
 | Élément | Valeur |
 |---|---|
 | Ce que fait le produit en une phrase | à compléter |
-| Pour qui (entreprises d'échafaudage ? BTP ? agences d'intérim ?) | à compléter |
+| Pour qui (entreprises d'échafaudage ? BTP ? autres ?) | à compléter |
 | Fonctions principales (ex. habilitations et échéances, planning, dossiers salariés) | à compléter, **ne pas supposer** |
 | Ce que le produit ne fait pas | à compléter |
 | Prix et formules | à compléter |
